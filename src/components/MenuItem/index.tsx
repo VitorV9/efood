@@ -1,13 +1,16 @@
 import { Card } from './styles'
 
-const MenuItem = () => (
+type Props = {
+  image: string
+  title: string
+  description: string
+}
+
+const MenuItem = ({ image, title, description }: Props) => (
   <Card>
-    <img src="https://placehold.co/304x167/CCC/FFF?text=Pizza" alt="Pizza" />
-    <h3>Pizza Marguerita</h3>
-    <p>
-      A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-      manjericão fresco e um toque de azeite. Sabor e simplicidade!
-    </p>
+    <img src={image} alt={title} />
+    <h3>{title}</h3>
+    <p>{description}</p>
     <button>Adicionar ao carrinho</button>
   </Card>
 )

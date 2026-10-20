@@ -1,28 +1,27 @@
 import { Link } from 'react-router-dom'
-import { HeaderContainer, Title, HeaderNav } from './styles'
+import { HeaderContainer, Title, HeaderNav, Logo } from './styles'
+import logoImg from '../../assets/images/logo.svg'
 
 type Props = {
   isHome?: boolean
 }
 
-const Header = ({ isHome = false }: Props) => (
+const Header = ({ isHome = true }: Props) => (
   <HeaderContainer $isHome={isHome}>
     <div className="container">
       {isHome ? (
         <>
-          <img
-            src="https://placehold.co/125x58/E66767/FFF?text=efood"
-            alt="efood"
-          />
-          <Title>Viva experiências gastronômicas no conforto da sua casa</Title>
+          <Logo src={logoImg} alt="efood" />
+          <Title>
+            Viva experiências gastronômicas
+            <br />
+            no conforto da sua casa
+          </Title>
         </>
       ) : (
         <HeaderNav>
           <Link to="/">Restaurantes</Link>
-          <img
-            src="https://placehold.co/125x58/E66767/FFF?text=efood"
-            alt="efood"
-          />
+          <Logo src={logoImg} alt="efood" />
           <span>0 produto(s) no carrinho</span>
         </HeaderNav>
       )}

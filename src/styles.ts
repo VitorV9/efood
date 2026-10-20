@@ -5,15 +5,18 @@ export const cores = {
   fundo: '#FFF8F2',
   fundoSecundario: '#FFEBD9',
   branco: '#FFFFFF',
-  textLight: '#FFEBD9'
+  amarelo: '#FFB930'
 }
 
 export const GlobalCss = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
   }
 
   body {

@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 
+import bannerImg from '../../assets/images/massa.png'
+
 const Imagem = styled.div`
   width: 100%;
   height: 280px;
-  background-image: url('https://placehold.co/1920x280/333/FFF?text=Massa');
+  background-image: url(${bannerImg});
   background-size: cover;
   background-position: center;
   position: relative;
@@ -27,7 +29,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 32px 0;
+  padding: 25px 0 32px;
   color: ${cores.branco};
 
   h2 {

@@ -1,36 +1,42 @@
 import {
   Card,
+  Capa,
   Content,
   Description,
   HeaderCard,
   Rating,
   TagsContainer,
   Tag,
-  Button
+  ButtonLink
 } from './styles'
 
-const RestaurantCard = () => (
+type Props = {
+  title: string
+  rating: string
+  description: string
+  tags: string[]
+  image: string
+}
+
+const RestaurantCard = ({ title, rating, description, tags, image }: Props) => (
   <Card>
-    <img
-      src="https://placehold.co/472x217/CCC/FFF?text=Comida"
-      alt="Restaurante"
-    />
+    <Capa src={image} alt={title} />
     <TagsContainer>
-      <Tag>Destaque da semana</Tag>
-      <Tag>Japonesa</Tag>
+      {tags.map((tag) => (
+        <Tag key={tag}>{tag}</Tag>
+      ))}
     </TagsContainer>
     <Content>
-      <HeaderCard>
-        <h3>Hioki Sushi</h3>
-        <Rating>
-          4.9 <span style={{ color: '#FFB930' }}>★</span>
-        </Rating>
-      </HeaderCard>
-      <Description>
-        Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis
-        frescos, sashimis deliciosos e pratos quentes.
-      </Description>
-      <Button>Saiba mais</Button>
+      <div>
+        <HeaderCard>
+          <h3>{title}</h3>
+          <Rating>
+            {rating} <span>★</span>
+          </Rating>
+        </HeaderCard>
+        <Description>{description}</Description>
+      </div>
+      <ButtonLink to="/perfil">Saiba mais</ButtonLink>
     </Content>
   </Card>
 )
