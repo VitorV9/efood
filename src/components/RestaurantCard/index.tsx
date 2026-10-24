@@ -11,6 +11,7 @@ import {
 } from './styles'
 
 type Props = {
+  id: number
   title: string
   rating: string
   description: string
@@ -18,7 +19,14 @@ type Props = {
   image: string
 }
 
-const RestaurantCard = ({ title, rating, description, tags, image }: Props) => (
+const RestaurantCard = ({
+  id,
+  title,
+  rating,
+  description,
+  tags,
+  image
+}: Props) => (
   <Card>
     <Capa src={image} alt={title} />
     <TagsContainer>
@@ -36,7 +44,7 @@ const RestaurantCard = ({ title, rating, description, tags, image }: Props) => (
         </HeaderCard>
         <Description>{description}</Description>
       </div>
-      <ButtonLink to="/perfil">Saiba mais</ButtonLink>
+      <ButtonLink to={`/perfil/${id}`}>Saiba mais</ButtonLink>
     </Content>
   </Card>
 )

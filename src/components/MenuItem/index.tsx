@@ -1,18 +1,28 @@
 import { Card } from './styles'
 
 type Props = {
-  image: string
-  title: string
-  description: string
+  foto: string
+  nome: string
+  descricao: string
+  onClick: () => void
 }
 
-const MenuItem = ({ image, title, description }: Props) => (
-  <Card>
-    <img src={image} alt={title} />
-    <h3>{title}</h3>
-    <p>{description}</p>
-    <button>Adicionar ao carrinho</button>
-  </Card>
-)
+const MenuItem = ({ foto, nome, descricao, onClick }: Props) => {
+  const getDescricao = (texto: string) => {
+    if (texto.length > 130) {
+      return texto.slice(0, 127) + '...'
+    }
+    return texto
+  }
+
+  return (
+    <Card>
+      <img src={foto} alt={nome} />
+      <h3>{nome}</h3>
+      <p>{getDescricao(descricao)}</p>
+      <button onClick={onClick}>Mais detalhes</button>
+    </Card>
+  )
+}
 
 export default MenuItem

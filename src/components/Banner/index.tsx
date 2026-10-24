@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-
-import bannerImg from '../../assets/images/massa.png'
+import { Restaurante } from '../../pages/Perfil'
 
 const Imagem = styled.div`
   width: 100%;
   height: 280px;
-  background-image: url(${bannerImg});
   background-size: cover;
   background-position: center;
   position: relative;
@@ -43,12 +41,16 @@ const Content = styled.div`
   }
 `
 
-const Banner = () => (
-  <Imagem>
+type Props = {
+  restaurante: Restaurante
+}
+
+const Banner = ({ restaurante }: Props) => (
+  <Imagem style={{ backgroundImage: `url(${restaurante.capa})` }}>
     <div className="container" style={{ height: '100%' }}>
       <Content>
-        <h2>Italiana</h2>
-        <h1>La Dolce Vita Trattoria</h1>
+        <h2>{restaurante.tipo}</h2>
+        <h1>{restaurante.titulo}</h1>
       </Content>
     </div>
   </Imagem>
