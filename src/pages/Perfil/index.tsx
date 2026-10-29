@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import MenuItem from '../../components/MenuItem'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
 
 import { Modal, ModalContent, MenuContainer } from './styles'
 
@@ -36,6 +38,8 @@ const Perfil = () => {
   const [modalEstaAberta, setModalEstaAberta] = useState(false)
   const [pratoSelecionado, setPratoSelecionado] = useState<Prato | null>(null)
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
     fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
@@ -62,6 +66,14 @@ const Perfil = () => {
 
   if (!restaurante) {
     return <h3>Carregando cardápio...</h3>
+  }
+
+  const addToCart = () => {
+    if (pratoSelecionado) {
+      dispatch(add(pratoSelecionado))
+      dispatch(open())
+      fecharModal()
+    }
   }
 
   return (
@@ -100,7 +112,7 @@ const Perfil = () => {
               <h4>{pratoSelecionado.nome}</h4>
               <p>{pratoSelecionado.descricao}</p>
               <p>Serve: {pratoSelecionado.porcao}</p>
-              <button>
+              <button onClick={addToCart}>
                 Adicionar ao carrinho - {formataPreco(pratoSelecionado.preco)}
               </button>
             </div>
