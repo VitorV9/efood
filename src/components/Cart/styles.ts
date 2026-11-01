@@ -56,7 +56,7 @@ export const CartItem = styled.li`
   position: relative;
   margin-bottom: 16px;
 
-  img {
+  > img {
     height: 80px;
     width: 80px;
     object-fit: cover;
@@ -80,7 +80,6 @@ export const CartItem = styled.li`
   }
 
   button {
-    background-image: url(''); /* Deixe vazio, vamos passar via tag img ou url direta no componente */
     width: 16px;
     height: 16px;
     border: none;
@@ -89,6 +88,12 @@ export const CartItem = styled.li`
     bottom: 8px;
     right: 8px;
     cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 `
 
